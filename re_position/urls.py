@@ -26,5 +26,7 @@ urlpatterns = [
     path("products/", include("products.urls")),
 ]
 
+handler404 = "re_position.views.not_found"
+
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
