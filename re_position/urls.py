@@ -18,11 +18,10 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
-
-from . import views
+from django.views.generic import RedirectView
 
 urlpatterns = [
-    path("", views.home, name="home"),
+    path("", RedirectView.as_view(pattern_name="product-list")),
     path("admin/", admin.site.urls),
     path("products/", include("products.urls")),
 ]
