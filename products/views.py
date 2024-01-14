@@ -24,8 +24,15 @@ class ProductListView(ListView):
 
 class ProductDetailView(TemplateView):
     model = Product
-    template_name = "products/product_details.html"
+    template_name = "products/product_detail.html"
     context_object_name = "product"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        product_id = self.kwargs.get("pk")
+        product = get(products.products, product_id)
+        context["product"] = product
+        return context
 
 
 class ProductCreateView(CreateView):
@@ -41,3 +48,10 @@ class ProductUpdateView(UpdateView):
 class ProductDeleteView(DeleteView):
     model = Product
     template_name = "products/products.html"
+
+
+def get(products, id):
+    for product in products:
+        if product["id"] == str(id):
+            return product
+    return None
