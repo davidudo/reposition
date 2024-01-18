@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.humanize",
-    "products.apps.ProductsConfig",
+    "product.apps.ProductConfig",
     "whitenoise.runserver_nostatic",
     "slippers",
 ]

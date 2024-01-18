@@ -7,13 +7,13 @@ from django.views.generic import (
     TemplateView,
     UpdateView,
 )
-from products import products
-from products.models import Product
+from product import products
+from product.models import Product
 
 
 class ProductListView(ListView):
     model = Product
-    template_name = "products/products.html"
+    template_name = "product/products.html"
     context_object_name = "products"
 
     def get_context_data(self, **kwargs):
@@ -24,7 +24,7 @@ class ProductListView(ListView):
 
 class ProductDetailView(TemplateView):
     model = Product
-    template_name = "products/product_detail.html"
+    template_name = "product/product_detail.html"
     context_object_name = "product"
 
     def get_context_data(self, **kwargs):
@@ -37,17 +37,17 @@ class ProductDetailView(TemplateView):
 
 class ProductCreateView(CreateView):
     model = Product
-    template_name = "products/products.html"
+    template_name = "product/products.html"
 
 
 class ProductUpdateView(UpdateView):
     model = Product
-    template_name = "products/products.html"
+    template_name = "product/products.html"
 
 
 class ProductDeleteView(DeleteView):
     model = Product
-    template_name = "products/products.html"
+    template_name = "product/products.html"
 
 
 def get(products, id):

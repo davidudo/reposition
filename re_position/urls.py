@@ -23,7 +23,7 @@ from django.views.generic import RedirectView
 urlpatterns = [
     path("", RedirectView.as_view(pattern_name="product-list")),
     path("admin/", admin.site.urls),
-    path("products/", include("products.urls")),
+    path("products/", include("product.urls")),
 ]
 
 handler404 = "re_position.views.not_found"
