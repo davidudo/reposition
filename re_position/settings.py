@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django.contrib.humanize",
     "product.apps.ProductConfig",
+    "review.apps.ReviewConfig",
     "whitenoise.runserver_nostatic",
     "slippers",
 ]
