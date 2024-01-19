@@ -9,14 +9,20 @@ DELETE_DEPLOYMENTS_ENDPOINT="https://api.vercel.com/v13/deployments"
 # Create a list of deployments.
 deployments=$(curl -s -X GET "$GET_DEPLOYMENTS_ENDPOINT/?projectId=$VERCEL_PROJECT_ID&teamId=$VERCEL_ORG_ID" -H "Authorization: Bearer $VERCEL_TOKEN ")
 
+echo $deployments
+
 # Filter the deployments list by meta.base_hash === meta tag.
-filtered_deployments=$(echo $deployments | jq --arg META_TAG "$META_TAG" '[.deployments[] | select(.meta.base_hash | type == "string" and contains($META_TAG)) | .uid] | join(",")')
+filtered_deployments=$(echo "$deployments" | jq --arg BRANCH_NAME "$BRANCH_NAME" '[.deployments[] | select((.meta.base_hash // "" | contains($BRANCH_NAME)) or (.meta.githubCommitRef // "" | contains($BRANCH_NAME))) | .uid] | join(",")')
+echo $filtered_deployments
+
 filtered_deployments="${filtered_deployments//\"/}" # Remove double quotes
+
+echo $filtered_deployments
 
 # Clears the values from filtered_deployments
 IFS=',' read -ra values <<<"$filtered_deployments"
 
-echo "META_TAG ${META_TAG}"
+echo "BRANCH_NAME ${BRANCH_NAME}"
 echo "Filtered deployments ${filtered_deployments}"
 
 # Iterate over the filtered deployments list.
