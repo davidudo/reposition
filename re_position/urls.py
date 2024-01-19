@@ -24,6 +24,7 @@ urlpatterns = [
     path("", RedirectView.as_view(pattern_name="product-list")),
     path("admin/", admin.site.urls),
     path("products/", include("product.urls")),
+    path("reviews/", include("review.urls")),
 ]
 
 handler404 = "re_position.views.not_found"

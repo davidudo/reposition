@@ -3,3 +3,4 @@ components:
   footer: "components/footer.html"
   product_list: "components/product_list.html"
   product_overview: "components/product_overview.html"
+  reviews: "components/reviews.html"
