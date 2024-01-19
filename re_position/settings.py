@@ -26,7 +26,7 @@ SECRET_KEY = str(os.getenv("SECRET_KEY"))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1", "localhost", ".vercel.app", "re-position.onrender.com"]
+ALLOWED_HOSTS = ["127.0.0.1", "localhost", ".vercel.app", ".onrender.com"]
 
 
 # Application definition
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "django.contrib.humanize",
     "product.apps.ProductConfig",
     "review.apps.ReviewConfig",
+    "order.apps.OrderConfig",
     "whitenoise.runserver_nostatic",
     "slippers",
 ]
