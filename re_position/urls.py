@@ -25,6 +25,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("products/", include("product.urls")),
     path("reviews/", include("review.urls")),
+    path("orders/", include("order.urls")),
 ]
 
 handler404 = "re_position.views.not_found"
