@@ -11,8 +11,8 @@ deployments=$(curl -s -X GET "$GET_DEPLOYMENTS_ENDPOINT/?projectId=$VERCEL_PROJE
 
 echo $deployments
 
-# Filter the deployments list by meta.base_hash === meta tag.
-filtered_deployments=$(echo "$deployments" | jq --arg BRANCH_NAME "$BRANCH_NAME" '[.deployments[] | select((.meta.base_hash // "" | contains($BRANCH_NAME)) or (.meta.githubCommitRef // "" | contains($BRANCH_NAME))) | .uid] | join(",")')
+# Filter the deployments list by meta.branch_name === meta tag.
+filtered_deployments=$(echo "$deployments" | jq --arg BRANCH_NAME "$BRANCH_NAME" '[.deployments[] | select((.meta.branch_name // "" | contains($BRANCH_NAME)) or (.meta.githubCommitRef // "" | contains($BRANCH_NAME))) | .uid] | join(",")')
 echo $filtered_deployments
 
 filtered_deployments="${filtered_deployments//\"/}" # Remove double quotes

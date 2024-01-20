@@ -53,9 +53,9 @@ jobs:
           vercel --version
           vercel pull --yes --environment=preview --token=$VERCEL_TOKEN
           vercel build --token=$VERCEL_TOKEN
-          vercel deploy --prebuilt --archive=tgz --token=$VERCEL_TOKEN --meta base_hash=${{ env.BRANCH_NAME }}
+          vercel deploy --prebuilt --archive=tgz --token=$VERCEL_TOKEN --meta branch_name=${{ env.BRANCH_NAME }}
 
-          vercel ls --token=$VERCEL_TOKEN --meta base_hash=${{ env.BRANCH_NAME }} &> vercel-output
+          vercel ls --token=$VERCEL_TOKEN --meta branch_name=${{ env.BRANCH_NAME }} &> vercel-output
           url=$(cat vercel-output | grep http | awk '{print $2}')
           echo "New preview URL: $url"
           echo "BRANCH_NAME=$BRANCH_NAME"
