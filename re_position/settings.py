@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.humanize",
+    "core.apps.CoreConfig",
     "product.apps.ProductConfig",
     "review.apps.ReviewConfig",
     "order.apps.OrderConfig",

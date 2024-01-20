@@ -11,24 +11,24 @@ from order.models import Order
 
 class OrderListView(ListView):
     model = Order
-    template_name = "order/orders.html"
+    template_name = "orders.html"
 
 
 class OrderCreateView(CreateView):
     model = Order
-    template_name = "order/orders.html"
+    template_name = "orders.html"
 
 
 class OrderUpdateView(UpdateView):
     model = Order
-    template_name = "order/orders.html"
+    template_name = "orders.html"
 
 
 class OrderDeleteView(DeleteView):
     model = Order
-    template_name = "order/orders.html"
+    template_name = "orders.html"
 
 
 class OrderHistoryListView(ListView):
     model = Order
-    template_name = "order/order_history.html"
+    template_name = "order_history.html"
