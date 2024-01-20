@@ -21,10 +21,10 @@ from django.urls import include, path
 from django.views.generic import RedirectView
 
 urlpatterns = [
-    path("", RedirectView.as_view(pattern_name="product-list")),
+    path("", RedirectView.as_view(pattern_name="product_list")),
     path("admin/", admin.site.urls),
     path("products/", include("product.urls")),
-    path("reviews/", include("review.urls")),
+    path("reviews/<str:pk>/", include("review.urls")),
     path("orders/", include("order.urls")),
 ]
 
