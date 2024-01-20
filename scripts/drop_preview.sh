@@ -11,7 +11,7 @@ deployments=$(curl -s -X GET "$GET_DEPLOYMENTS_ENDPOINT/?projectId=$VERCEL_PROJE
 
 echo $deployments
 
-# Filter the deployments list by meta.branch_name === meta tag.
+# Filter for deployments that have (meta.branch_name or meta.githubCommitRef) === BRANCH_NAME.
 filtered_deployments=$(echo "$deployments" | jq --arg BRANCH_NAME "$BRANCH_NAME" '[.deployments[] | select((.meta.branch_name // "" | contains($BRANCH_NAME)) or (.meta.githubCommitRef // "" | contains($BRANCH_NAME))) | .uid] | join(",")')
 echo $filtered_deployments
 
