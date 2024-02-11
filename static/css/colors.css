@@ -1,7 +1,0 @@
-.product__black {
-  @apply bg-gray-900;
-}
-
-.product__gray {
-  @apply bg-gray-400;
-}
