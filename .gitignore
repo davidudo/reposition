@@ -154,3 +154,4 @@ media
 
 # End of https://mrkandreev.name/snippets/gitignore-generator/#Python,Django
 .vercel
+staticfiles/
